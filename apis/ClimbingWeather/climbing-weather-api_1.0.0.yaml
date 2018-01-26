@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+    x-ibm-name: climbing-weather-api
+    title: 'Climbing Weather API'
+    version: 1.0.1
+schemes:
+    - https
+host: $(catalog.host)
+consumes:
+    - application/json
+produces:
+    - application/json
+x-ibm-configuration:
+    assembly:
+        execute:
+            - {invoke: {target-url: value1, title: '3 day forecast invocation', cache-response: time-to-live, cache-key: $(request.search)}}
+    gateway: datapower-gateway
+    enforced: true
+    testable: true
+    phase: realized
+    cors:
+        enabled: true
+paths:
+    /weather/forecast:
+        get:
+            summary: 'Retrieve the 3 day forecast for a location'
+            description: 'Retrieve the locations weather forecast descriptions for the next 3 days and nights'
+            operationId: getWeather
+            tags: [Weather]
+            parameters: [{name: zip, type: string, in: query, description: 'A 5 number zip code'}, {name: country, type: string, in: query, description: 'A 2 letter country code'}, {name: lat, type: string, in: query, description: 'A latitude value between -90 and 90'}, {name: lon, type: string, in: query, description: 'A longitude value between -180 and 180'}]
+            responses: {'200': {description: Success}, '400': {description: 'Bad Request'}, '408': {description: 'Request Timeout'}, '500': {description: 'Internal Server Error'}}
+basePath: /
+tags:
+    -
+        name: Weather
+        description: 'Sample API to get weather forecast data'
+securityDefinitions:
+    client-secret:
+        type: apiKey
+        description: ""
+        in: header
+        name: X-IBM-Client-Secret
+    client-id:
+        type: apiKey
+        description: ""
+        in: header
+        name: X-IBM-Client-Id
+security:
+    -
+        client-secret: []
+        client-id: []
