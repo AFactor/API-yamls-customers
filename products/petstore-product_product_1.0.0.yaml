@@ -2,7 +2,7 @@ product: 1.0.0
 info:
   name: petstore-product
   title: PetStore Product
-  version: 1.0.41
+  version: 1.0.42
 visibility:
   view:
     enabled: true
