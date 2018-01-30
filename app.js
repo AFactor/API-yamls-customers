@@ -29,5 +29,5 @@ var debug = function(data){
 	console.log(clc.red.bgWhite.underline(data));
 }
 //info("data");
-console.log(process.argv);  
+console.log(process.argv[2]);  
 
