@@ -28,6 +28,6 @@ var error = function(data){
 var debug = function(data){
 	console.log(clc.red.bgWhite.underline(data));
 }
-info("data");
+//info("data");
 console.log(process.argv);  
 
