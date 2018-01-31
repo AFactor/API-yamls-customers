@@ -28,7 +28,7 @@ process.argv.forEach(element => {
 });
 
 // now create a tmp sub folder
-var folderName = util.format("tmp_%s",  new Date().getTime());
+var folderName = util.format("tmp_%s_%s", process.argv[2],   new Date().getTime());
 fs.mkdirSync(folderName);
 info(folderName + ' created');
 //copy all apis in the subfolder
