@@ -36,7 +36,8 @@ info(folderName + ' created');
 cp.sync('./apis/**/*.yaml', "./" + folderName);
 cp.sync('./products/*.yaml', "./" + folderName);
 //load env varibales
-var config = require("./" + process.argv[3]);
+var config = require(process.argv[3]);
+info(config);
 var login = util.format('apic login -u %s -p %s -s %s', config.userName, config.password, config.server);
 info(login);
 var logout = util.format('apic logout -s %s', config.server);
@@ -54,33 +55,33 @@ for (var p = 4; p < process.argv.length; p++) {
 var pushCommand = pushArray.join(' & ');
 debug('Push command: ' + pushCommand);
 warn(pushArray.length + ' product(s) are being pushed to destination');
-cmd.get(login, doLogin);
+// cmd.get(login, doLogin);
 
 
 
-var doLogout = function (err, data, stderr) {
-  if (stderr || err) {
-    error('error while logging out' + err + stderr);
+// var doLogout = function (err, data, stderr) {
+//   if (stderr || err) {
+//     error('error while logging out' + err + stderr);
 
-  } else {
-    warn("logout from source : " + data);
+//   } else {
+//     warn("logout from source : " + data);
 
-  }
+//   }
   
 
-}
+// }
 
-var doLogin = function (err, data, stderr) {
-  if (stderr || err) {
-    error('error while logging in' + err + stderr);
+// var doLogin = function (err, data, stderr) {
+//   if (stderr || err) {
+//     error('error while logging in' + err + stderr);
 
-  } else {
-    info(data);
-    cmd.get(pushCommand, function(err,data, stderr){
-      cmd.get(logout,doLogout);
-    })
-  }
-}
+//   } else {
+//     info(data);
+//     cmd.get(pushCommand, function(err,data, stderr){
+//       cmd.get(logout,doLogout);
+//     })
+//   }
+// }
 
 
 
