@@ -7,12 +7,6 @@ var
   yaml = require('yamljs');
   glob = require("glob");
 	
-
-
-	
-
- 
-
 var info = function(data){
 	console.log(clc.green(data));
 }
@@ -29,5 +23,18 @@ var debug = function(data){
 	console.log(clc.red.bgWhite.underline(data));
 }
 //info("data");
-console.log(process.argv[2]);  
+process.argv.forEach(element => {
+  info(element);  
+});
+
+// now create a tmp sub folder
+var folderName = util.format("tmp_%s",  new Date().getTime());
+fs.mkdirSync(folderName);
+info(folderName + ' created');
+//copy all apis in the subfolder
+cp.sync('./apis/**/*.yaml',   "./" + folderName);  
+cp.sync('./products/*.yaml',   "./" + folderName );
+   
+
+
 
