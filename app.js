@@ -36,7 +36,7 @@ info(folderName + ' created');
 cp.sync('./apis/**/*.yaml', "./" + folderName);
 cp.sync('./products/*.yaml', "./" + folderName);
 //load env varibales
-var config = require(process.argv[3]);
+var config = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
 info(config);
 var login = util.format('apic login -u %s -p %s -s %s', config.userName, config.password, config.server);
 info(login);
