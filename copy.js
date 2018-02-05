@@ -16,7 +16,16 @@ fs.mkdirSync(folderName);
 console.log('tmp folder ' + folderName + ' created');
 console.log('copy all apis in the subfolder');
 cp.sync('./apis/**/*.yaml', "./" + folderName);
-
+console.log('now copy relevant products');
+glob("./products/*.yaml", null, function (er, files) {
+  for(var f in files){
+    var fileName = files[f].split("/")[files[f].split("/").length-1];
+    if(process.argv.includes[fileName]){
+      console.log('Copying changed product ' + fileName + ' across the tmp folder');
+      cp.sync(files[f], folderName);
+    }
+  }
+});
 
 
 
