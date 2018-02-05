@@ -10,7 +10,7 @@ cmd = require('node-cmd');
 fs.readFile(process.argv[3], 'utf8', function(err, config){
 
     var configJson = JSON.parse(config);
-    var login = util.format('apic login -u %s -p %s -s %s', configJson.userName, configJson.password, configJson.server);
+    var login = util.format('yes |apic login -u %s -p %s -s %s', configJson.userName, configJson.password, configJson.server);
     console.log(login);
     //login
     cmd.get(login, function (err, data, stderr) {
@@ -22,7 +22,7 @@ fs.readFile(process.argv[3], 'utf8', function(err, config){
                 var productFile =yaml.parse(fs.readFileSync(files[f], 'utf8'))
                 //if they are products, publish
                 if(productFile.product){
-                    var singlePush = util.format('apic publish %s  -c %s -o %s -s %s' ,  
+                    var singlePush = util.format('yes |apic publish %s  -c %s -o %s -s %s' ,  
                     files[f] , configJson.catalogue, configJson.org, configJson.server);
                      pushArray.push (singlePush);
                 }
@@ -32,7 +32,7 @@ fs.readFile(process.argv[3], 'utf8', function(err, config){
                 console.log('Push command : ' + pushCommand);
                 cmd.get(pushCommand, function(err, data, staderr){
                     console.log(data);
-                    var logout = util.format('apic logout -s %s', configJson.server);
+                    var logout = util.format('yes |apic logout -s %s', configJson.server);
                     cmd.get(logout, function(err, data, staderr){
                         console.log(data)
                     });
