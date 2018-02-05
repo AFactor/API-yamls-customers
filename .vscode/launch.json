@@ -9,9 +9,9 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/app.js",
+            "program": "${workspaceFolder}/publish.js",
             "args": [
-                    "a", "b", "c"  ],
+                    "0","config.json"]
         }
     ]
 }
