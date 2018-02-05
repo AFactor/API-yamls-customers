@@ -1,0 +1,27 @@
+product: 1.0.0
+info:
+  name: climbing-weather-api-product
+  title: Climbing Weather API product
+  version: 1.0.2
+visibility:
+  view:
+    enabled: true
+    type: public
+    tags: []
+    orgs: []
+  subscribe:
+    enabled: true
+    type: authenticated
+    tags: []
+    orgs: []
+apis:
+  climbing-weather-api:
+    $ref: climbing-weather-api_1.0.0.yaml
+plans:
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      hard-limit: false
+      value: 100/hour
