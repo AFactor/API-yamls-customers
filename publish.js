@@ -20,6 +20,7 @@ fs.readFile(process.argv[3], 'utf8', function(err, config){
             var pushArray = [];
             for (var f in files) {
                 var productFile =yaml.parse(fs.readFileSync(files[f], 'utf8'))
+                console.log('product file ' + files[f]);
                 //if they are products, publish
                 if(productFile.product){
                     var singlePush = util.format('yes |apic publish %s  -c %s -o %s -s %s' ,  
