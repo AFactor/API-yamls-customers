@@ -9,9 +9,9 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/copy.js",
+            "program": "${workspaceFolder}/common/scripts/copy.js",
             "args": [
-                    "0","config.json", 
+                    "0","./common/scripts/config.json", 
                     "products/climbing-weather-api-product_product_1.0.0.yaml",
                      "products/petstore-product_product_1.0.0.yaml"
                     ]
