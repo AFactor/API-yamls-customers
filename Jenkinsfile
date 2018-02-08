@@ -1,10 +1,6 @@
 #!groovy
 pipeline {
-   environment {
-     configFile = "14ce0658-5942-4980-a3cf-7bef5e1bd2c9"
-   }
- 
-  agent any
+   agent any
   stages {
     stage('copy and deploy') {
       
