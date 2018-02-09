@@ -1,3 +1,10 @@
-{
-	
-}
+[
+    {
+      "key": "target-url",
+      "value": "http://tempuri.com/"
+    },
+    {
+      "key": "version",
+      "value": "1.0.56"
+    }
+  ]
