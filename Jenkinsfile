@@ -1,8 +1,13 @@
+properties([
+    [$class: 'jenkins.model.BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '96']],
+    pipelineTriggers([[$class:"SCMTrigger", scmpoll_spec:"H/10 * * * *"]]),
+])
 pipeline {
   agent any
   options {
     skipDefaultCheckout(true)
   }
+  
   stages {
     
     stage('Avik CheckOut') {
