@@ -7,7 +7,7 @@ pipeline {
     
     stage('Avik CheckOut') {
         steps {
-            checkout scm
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: '/products']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-generated-ssh-key', name: 'customergit', url: 'git@github.com:AFactor/API-yamls-customers.git']]])
         }
     }
     stage('tokenize') {
