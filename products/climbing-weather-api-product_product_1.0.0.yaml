@@ -24,4 +24,4 @@ plans:
     approval: false
     rate-limit:
       hard-limit: false
-      value: 100/hour
+      value: 110/hour
