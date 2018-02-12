@@ -38,6 +38,12 @@ fs.readFile(process.argv[3], 'utf8', function(err, config){
                         console.log(data)
                     });
                 });
+            } else {
+                console.log('No products to publish in this build');
+                var logout = util.format('yes |apic logout -s %s', configJson.server);
+                    cmd.get(logout, function(err, data, staderr){
+                        console.log(data)
+                    });
             }
                  
             
