@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/common/scripts/copy.js",
+            "program": "${workspaceFolder}/common/scripts/tokenize.js",
             "args": [
                     "0","./common/scripts/config.json", 
                     "products/climbing-weather-api-product_product_1.0.0.yaml",
