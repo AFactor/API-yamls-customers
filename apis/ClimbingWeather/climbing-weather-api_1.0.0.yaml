@@ -23,7 +23,7 @@ x-ibm-configuration:
 paths:
     /weather/forecast:
         get:
-            summary: 'Retrieve the 3 day forecast for a location and place'
+            summary: 'Retrieve the 3 day forecast for a location and place date etc'
             description: 'Retrieve the locations weather forecast descriptions for the next 3 days and nights'
             operationId: getWeather
             tags: [Weather]
