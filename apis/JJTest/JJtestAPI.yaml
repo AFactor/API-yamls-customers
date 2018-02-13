@@ -1,0 +1,53 @@
+---
+swagger: "2.0"
+info:
+  x-ibm-name: "test1"
+  title: "test1"
+  version: "1.0.0"
+schemes:
+- "https"
+host: "$(catalog.host)"
+basePath: "/test1"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+securityDefinitions:
+  clientIdHeader:
+    type: "apiKey"
+    in: "header"
+    name: "X-IBM-Client-Id"
+security:
+- clientIdHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+    - activity-log:
+        title: "activity-log"
+        content: "activity"
+        error-content: "payload"
+        version: "1.0.0"
+    - gatewayscript:
+        title: "gatewayscript"
+        version: "1.0.0"
+        source: "var path = apim.getvariable('request.path');\n//var opath = apim.getvariable('api.operation.path');\n\
+          //var param = apim.getvariable('request.parameters.partyId')\n//opath.replace(\"\
+          partyId\",\"test\");\nvar base = apim.getvariable('api.root');\nbase = \"\
+          /\"+base;\nvar uri = path.replace(base,\"\");\nvar output = {\n      \"\
+          path\": path,\n      //\"opath\": opath,\n      //\"partyId\": param,\n\
+          \      \"root:\": base,\n      \"uri\": uri\n      }\n      apim.setvariable('message.body',output);"
+  phase: "realized"
+  categories:
+  - "level1/level2"
+paths:
+  /reflect:
+    get:
+      responses:
+        200:
+          description: "200 OK"
+definitions: {}
+tags: []
