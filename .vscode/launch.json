@@ -9,11 +9,10 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/common/scripts/tokenize.js",
+            "program": "${workspaceFolder}/common/scripts/tokenize.1.js",
             "args": [
                     "0","./common/scripts/config.json", 
-                    "products/climbing-weather-api-product_product_1.0.0.yaml",
-                     "products/petstore-product_product_1.0.0.yaml"
+                    "products/j2testProduct.yaml"
                     ]
         }
     ]

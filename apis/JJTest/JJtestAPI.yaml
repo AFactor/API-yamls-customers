@@ -34,7 +34,12 @@ x-ibm-configuration:
     - gatewayscript:
         title: "gatewayscript"
         version: "1.0.0"
-        source: "some replacement"
+        source: "var path = apim.getvariable('request.path');\n//var opath = apim.getvariable('api.operation.path');\n\
+          //var param = apim.getvariable('request.parameters.partyId')\n//opath.replace(\"\
+          partyId\",\"test\");\nvar base = apim.getvariable('api.root');\nbase = \"\
+          /\"+base;\nvar uri = path.replace(base,\"\");\nvar output = {\n      \"\
+          path\": path,\n      //\"opath\": opath,\n      //\"partyId\": param,\n\
+          \      \"root:\": base,\n      \"uri\": uri\n      }\n      apim.setvariable('message.body',output);"
   phase: "realized"
   categories:
   - "level1/level2"
