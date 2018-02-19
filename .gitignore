@@ -1,4 +1,4 @@
 package-lock.json
-node_modules/*
+Common/Scripts/node_modules/*
 tmp_*
 
