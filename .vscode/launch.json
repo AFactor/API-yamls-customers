@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/common/scripts/tokenize.1.js",
+            "program": "${workspaceFolder}/common/scripts/publish.js",
             "args": [
                     "0","./common/scripts/config.json", 
                     "products/j2testProduct.yaml"

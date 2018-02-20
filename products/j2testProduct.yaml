@@ -3,7 +3,7 @@ product: "1.0.0"
 info:
   name: "j2test"
   title: "J2Test"
-  version: "1.0.1"
+  version: "1.X.2"
 visibility:
   view:
     enabled: true

@@ -1,5 +1,4 @@
 var fs = require('fs'),
-yaml = require('yamljs'),
 glob = require("glob"),
 swagger = require('swagger-parser'),
 path = require('path');
