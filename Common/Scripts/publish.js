@@ -22,7 +22,7 @@ fs.readFile(process.argv[3], 'utf8', function(err, config){
                 
                 console.log('product file ' + files[f]);
                 //if they are products, publish
-                if(productFile.indexOf("product: \"1.0.0\"")>-1){
+                if(productFile.indexOf("product: \"1.0.0\"")>-1 || productFile.indexOf("product: 1.0.0")>-1 || productFile.indexOf("product: '1.0.0'")>-1){
                     //console.log('This is product');
                     var singlePush = util.format('yes |apic publish %s  -c %s -o %s -s %s' ,  
                     files[f] , configJson.catalogue, configJson.org, configJson.server);
