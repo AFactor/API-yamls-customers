@@ -1,6 +1,5 @@
 var fs = require('fs'),
 util =require('util'),
-yaml = require('yamljs'),
 cp = require('glob-copy'),
 glob = require("glob");
 cmd = require('node-cmd');
