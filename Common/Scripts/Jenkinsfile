@@ -21,6 +21,7 @@ pipeline {
    stage('changelog print') {
      steps{
      script {
+     def changedFiles = ""
      def changeLogSets = currentBuild.changeSets
       for (int i = 0; i < changeLogSets.size(); i++) {
           def entries = changeLogSets[i].items
@@ -30,11 +31,12 @@ pipeline {
               def files = new ArrayList(entry.affectedFiles)
               for (int k = 0; k < files.size(); k++) {
                   def file = files[k]
-                  echo "${file.path}"
+                  changedFiles += ${file.path}
               }
           }
       }
      }
+     sh "echo $changedFiles"
      }
    }
 
