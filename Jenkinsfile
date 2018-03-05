@@ -36,7 +36,7 @@ pipeline {
 
    stage('changelog print') {
      steps{
-    
+     echo $currentBuild.changeSets
      script {
      //env.changedFiles = ""
      def changeLogSets = currentBuild.changeSets
