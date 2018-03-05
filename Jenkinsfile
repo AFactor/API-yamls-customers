@@ -54,7 +54,7 @@ pipeline {
       }
       //sh "echo $changedFiles"
      }
-     echo "${env.changedFiles}"
+     //echo "${env.changedFiles}"
      }
    }
 
