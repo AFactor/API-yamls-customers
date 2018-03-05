@@ -23,7 +23,8 @@ pipeline {
     stage ('get core') {
       steps {
         dir('core') {
-        git url: 'git@github.com:AFactor/api-core.git'
+        git url: 'git@github.com:AFactor/api-core.git',
+        credentialsId: 'jenkins-generated-ssh-key'
     }
       }
     }
