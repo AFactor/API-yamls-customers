@@ -34,13 +34,13 @@ pipeline {
       }
     }
 
-   stage('changelog print') {
-     steps{
-     echo $currentBuild.changeSets
-     script {
+  //  stage('changelog print') {
+  //    steps{
+  //    echo $currentBuild.changeSets
+  //    script {
      //env.changedFiles = ""
-     def changeLogSets = currentBuild.changeSets
-     echo $changeLogSets
+     //def changeLogSets = currentBuild.changeSets
+     //echo $changeLogSets
       // for (int i = 0; i < changeLogSets.size(); i++) {
       //     def entries = changeLogSets[i].items
       //     for (int j = 0; j < entries.length; j++) {
@@ -54,10 +54,10 @@ pipeline {
       //     }
       // }
       //sh "echo $changedFiles"
-     }
-     //echo "${env.changedFiles}"
-     }
-   }
+  //    }
+  //    //echo "${env.changedFiles}"
+  //    }
+  //  }
 
     stage('Validate and Tokenize') {
       steps {
