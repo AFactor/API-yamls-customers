@@ -34,8 +34,10 @@ pipeline {
       }
     }
   stage('changelog'){
+    steps{
     script {
       def changeLogSets = currentBuild.changeSets
+    }
     }
   }
   //  stage('changelog print') {
