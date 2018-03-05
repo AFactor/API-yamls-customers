@@ -7,8 +7,7 @@ pipeline {
   options {
     skipDefaultCheckout(true)
   }
-  define {
-       def changedFiles = ""
+  
        
      }
   
@@ -35,6 +34,7 @@ pipeline {
 
    stage('changelog print') {
      steps{
+    env.changedFiles = ""
      script {
      
      def changeLogSets = currentBuild.changeSets
