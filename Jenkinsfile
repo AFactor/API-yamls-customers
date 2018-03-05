@@ -7,7 +7,9 @@ pipeline {
   options {
     skipDefaultCheckout(true)
   }
-  
+  environment {
+    changedFiles = "x"
+  }
        
      
   
@@ -36,7 +38,7 @@ pipeline {
      steps{
     
      script {
-     env.changedFiles = ""
+     //env.changedFiles = ""
      def changeLogSets = currentBuild.changeSets
       for (int i = 0; i < changeLogSets.size(); i++) {
           def entries = changeLogSets[i].items
@@ -52,7 +54,7 @@ pipeline {
       }
       //sh "echo $changedFiles"
      }
-     echo "${env.FILENAME}"
+     echo "${env.changedFiles}"
      }
    }
 
