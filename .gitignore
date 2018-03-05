@@ -1,4 +1,6 @@
 Common/Scripts/package-lock.json
 Common/Scripts/node_modules/*
+.apiconnect/*
+.vscode/*
 tmp_*
 
