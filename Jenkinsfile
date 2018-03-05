@@ -59,7 +59,7 @@ pipeline {
         //       npm install --prefix ./common/scripts
         //       node core/scripts/tokenize.js
         //       '''
-        sh returnStdout: true, script: 'core/Scripts/validatetokenize.sh'
+        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh'''
       }
     }
     stage('Copy to temp') {
