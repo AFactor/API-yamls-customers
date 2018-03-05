@@ -52,7 +52,7 @@ pipeline {
       }
       //sh "echo $changedFiles"
      }
-     sh '''echo $changedFiles'''
+     echo "${env.FILENAME}"
      }
    }
 
