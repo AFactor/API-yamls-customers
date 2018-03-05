@@ -33,7 +33,11 @@ pipeline {
     }
       }
     }
-
+  stage('changelog'){
+    script {
+      def changeLogSets = currentBuild.changeSets
+    }
+  }
   //  stage('changelog print') {
   //    steps{
   //    echo $currentBuild.changeSets
