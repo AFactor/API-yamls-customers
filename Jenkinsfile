@@ -34,9 +34,9 @@ pipeline {
 
    stage('changelog print') {
      steps{
-    env.changedFiles = ""
+    
      script {
-     
+     env.changedFiles = ""
      def changeLogSets = currentBuild.changeSets
       for (int i = 0; i < changeLogSets.size(); i++) {
           def entries = changeLogSets[i].items
