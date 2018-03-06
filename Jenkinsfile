@@ -47,12 +47,12 @@ pipeline {
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
             echo " ${file.path}"
-            fileNames += file.path + " "
+            env.fileNames += file.path + " "
         }
     }
 }
 
-    echo " ${fileNames}"
+    echo " ${env.fileNames}"
     }
     }
   }
