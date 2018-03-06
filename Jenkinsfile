@@ -50,8 +50,8 @@ pipeline {
     }
     stage('Copy to temp') {
       steps {
-        b= getChangeString()
-        sh returnStdout: true, script: """ core/Scripts/copy.sh $b """
+        
+        sh returnStdout: true, script: """ core/Scripts/copy.sh $getChangeString() """
       }
     }
     stage('Deploy to API Cloud') {
