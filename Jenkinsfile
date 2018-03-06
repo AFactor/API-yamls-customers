@@ -50,7 +50,7 @@ pipeline {
     }
     stage('Copy to temp') {
       steps {
-        def b=echo getChangeString()
+        b= getChangeString()
         sh returnStdout: true, script: """ core/Scripts/copy.sh $b """
       }
     }
