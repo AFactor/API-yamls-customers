@@ -20,28 +20,14 @@ pipeline {
         steps {
             deleteDir()
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: 'products/.*']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-generated-ssh-key', name: 'customergit', url: 'git@github.com:AFactor/API-yamls-customers.git']]])
-
         }
-
-    }
-
-    stage ('get core') {
-      steps {
-        dir('core') {
-        git url: 'git@github.com:AFactor/api-core.git',
-        credentialsId: 'jenkins-generated-ssh-key'
-    }
+        steps {
+          dir('core') {
+          git url: 'git@github.com:AFactor/api-core.git',
+          credentialsId: 'jenkins-generated-ssh-key'
       }
-    }
 
- 
-
-  stage('changelog'){
-    steps{
-      echo getChangeString()
     }
-  }
- 
 
     stage('Validate and Tokenize') {
       steps {
