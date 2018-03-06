@@ -25,8 +25,8 @@ pipeline {
           dir('core') {
           git url: 'git@github.com:AFactor/api-core.git',
           credentialsId: 'jenkins-generated-ssh-key'
+        }
       }
-
     }
 
     stage('Validate and Tokenize') {
