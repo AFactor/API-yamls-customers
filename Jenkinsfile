@@ -62,7 +62,6 @@ def getChangeString() {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            echo " $file.path"
             changeString += file.path + " "
         }
       }
