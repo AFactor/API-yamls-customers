@@ -8,7 +8,7 @@ pipeline {
     skipDefaultCheckout(true)
   }
   environment {
-     fileNames=""
+     fileNames="none"
   }
        
      
@@ -46,7 +46,7 @@ pipeline {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            echo " ${file.path}"
+            //echo " ${file.path}"
             env.fileNames += file.path + " "
         }
     }
