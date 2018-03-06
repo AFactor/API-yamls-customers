@@ -45,12 +45,12 @@ pipeline {
 
     stage('Validate and Tokenize') {
       steps {
-        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh'''
+        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh''' 
       }
     }
     stage('Copy to temp') {
       steps {
-        sh returnStdout: true, script: '''core/Scripts/copy.sh'''
+        sh returnStdout: true, script: """ core/Scripts/copy.sh echo getChangeString() """
       }
     }
     stage('Deploy to API Cloud') {
