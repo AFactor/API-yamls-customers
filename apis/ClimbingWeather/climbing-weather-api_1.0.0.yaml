@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
     x-ibm-name: climbing-weather-api
     title: 'Climbing Weather API'
-    version: 1.0.2
+    version: 1.0.3
 schemes:
     - https
 host: $(catalog.host)
@@ -13,7 +13,7 @@ produces:
 x-ibm-configuration:
     assembly:
         execute:
-            - {invoke: {target-url: http://tempurl.com, title: '3 day forecast invocation', cache-response: time-to-live, cache-key: $(request.search)}}
+            - {invoke: {target-url: http://tempurl.com, title: '4 day forecast invocation', cache-response: time-to-live, cache-key: $(request.search)}}
     gateway: datapower-gateway
     enforced: true
     testable: true
