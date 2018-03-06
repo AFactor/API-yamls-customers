@@ -34,7 +34,36 @@ pipeline {
       }
     }
 
-  @NonCPS
+ 
+
+  stage('changelog'){
+    steps{
+      echo getChangeString()
+    }
+  }
+ 
+
+    stage('Validate and Tokenize') {
+      steps {
+        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh'''
+      }
+    }
+    stage('Copy to temp') {
+      steps {
+        sh returnStdout: true, script: '''core/Scripts/copy.sh'''
+      }
+    }
+    stage('Deploy to API Cloud') {
+      steps {
+        configFileProvider([configFile(fileId: '14ce0658-5942-4980-a3cf-7bef5e1bd2c9', variable: 'ciConfig')]) {
+        sh returnStdout: true, script: '''core/Scripts/deploy.sh'''
+         }
+      }
+    }
+  }
+}
+
+ @NonCPS
 def getChangeString() {
     MAX_MSG_LEN = 100
     def changeString = ""
@@ -58,53 +87,3 @@ def getChangeString() {
     }
     return changeString
   }
-
-  stage('changelog'){
-    steps{
-      echo getChangeString()
-    }
-  }
-  //  stage('changelog print') {
-  //    steps{
-  //    echo $currentBuild.changeSets
-  //    script {
-     //env.changedFiles = ""
-     //def changeLogSets = currentBuild.changeSets
-     //echo $changeLogSets
-      // for (int i = 0; i < changeLogSets.size(); i++) {
-      //     def entries = changeLogSets[i].items
-      //     for (int j = 0; j < entries.length; j++) {
-      //         def entry = entries[j]
-      //         echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-      //         def files = new ArrayList(entry.affectedFiles)
-      //         for (int k = 0; k < files.size(); k++) {
-      //             def file = files[k]
-      //             changedFiles += ${file.path}
-      //         }
-      //     }
-      // }
-      //sh "echo $changedFiles"
-  //    }
-  //    //echo "${env.changedFiles}"
-  //    }
-  //  }
-
-    stage('Validate and Tokenize') {
-      steps {
-        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh'''
-      }
-    }
-    stage('Copy to temp') {
-      steps {
-        sh returnStdout: true, script: '''core/Scripts/copy.sh'''
-      }
-    }
-    stage('Deploy to API Cloud') {
-      steps {
-        configFileProvider([configFile(fileId: '14ce0658-5942-4980-a3cf-7bef5e1bd2c9', variable: 'ciConfig')]) {
-        sh returnStdout: true, script: '''core/Scripts/deploy.sh'''
-         }
-      }
-    }
-  }
-}
