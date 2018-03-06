@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
     x-ibm-name: climbing-weather-api
     title: 'Climbing Weather API'
-    version: 1.0.4
+    version: 1.0.5
 schemes:
     - https
 host: $(catalog.host)
