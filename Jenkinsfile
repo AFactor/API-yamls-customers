@@ -11,7 +11,10 @@ pipeline {
      fileNames="none"
   }
        
-     
+  if( $getChangeString() == "" ) {
+   currentBuild.result = 'ABORTED'
+   return
+}
   
   stages {
     
@@ -62,13 +65,15 @@ def getChangeString() {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            changeString += file.path + " "
+            if(file.path.contains("products/")){
+              changeString += file.path + " "
+            }
         }
       }
     }
 
     if (!changeString) {
-      changeString = " - No new changes"
+      changeString = ""
     }
     return changeString
   }
