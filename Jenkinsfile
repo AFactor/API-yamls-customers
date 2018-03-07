@@ -78,7 +78,7 @@ def getChangeString() {
             def file = files[k]
             if(file.path.contains("products/")){
               def arr = file.path.split("/");
-              def fileName = arr.takeRight(1);
+              def fileName = arr[arr.length-1];
               changeString +=fileName + " ";
             }
         }
