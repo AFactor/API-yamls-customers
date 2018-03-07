@@ -31,6 +31,7 @@ pipeline {
             }
         }
         steps {
+          error('no products to build');
           currentBuild.result = 'ABORTED'
         }
      }
