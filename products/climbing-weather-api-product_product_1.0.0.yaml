@@ -1,8 +1,8 @@
 product: 1.0.0
 info:
   name: climbing-weather-api-product
-  title: Climbing Weather API product 66
-  version: 1.0.66
+  title: Climbing Weather API product 67
+  version: 1.0.67
 visibility:
   view:
     enabled: true
