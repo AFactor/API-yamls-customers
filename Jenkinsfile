@@ -50,7 +50,7 @@ pipeline {
     stage('Deploy to API Cloud') {
       when {
         expression {
-            return  $getChangeString() != "";
+            return  getChangeString() != "";
             }
         }
       steps {
