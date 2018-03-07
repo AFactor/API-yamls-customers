@@ -24,30 +24,35 @@ pipeline {
         }
     }
 
-     stage('Check API Products') {
-        when {
-        expression {
-            return  $getChangeString() == "";
-            }
-        }
-        steps {
-          error('no products to build');
-          currentBuild.result = 'ABORTED'
-        }
-     }
+     
 
     stage('Validate and Tokenize') {
+      when {
+        expression {
+            return  $getChangeString() != "";
+            }
+        }
       steps {
         sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh''' 
       }
     }
     stage('Copy to temp') {
+      when {
+        expression {
+            return  $getChangeString() != "";
+            }
+        }
       steps {
         
         sh returnStdout: true, script: """ core/Scripts/copy.sh ${getChangeString()} """
       }
     }
     stage('Deploy to API Cloud') {
+      when {
+        expression {
+            return  $getChangeString() != "";
+            }
+        }
       steps {
         configFileProvider([configFile(fileId: '14ce0658-5942-4980-a3cf-7bef5e1bd2c9', variable: 'ciConfig')]) {
         sh returnStdout: true, script: '''core/Scripts/deploy.sh'''
