@@ -1,20 +1,20 @@
 properties([
-    [$class: 'jenkins.model.BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '96']],
-    pipelineTriggers([[$class:"SCMTrigger", scmpoll_spec:"H/10 * * * *"]]),
+   parameters([
+  		string(name: 'productName', defaultValue: '')
+  	])
 ])
 pipeline {
   agent any
   options {
     skipDefaultCheckout(true)
   }
-  environment {
-     fileNames="none"
-  }
+ 
   
   stages {
     
     stage('Check Source') {
         steps {
+            echo "productName = ${productName}"
             deleteDir()
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: '', includedRegions: 'products/.*']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-generated-ssh-key', name: 'customergit', url: 'git@github.com:AFactor/API-yamls-customers.git']]])
             dir('core') {
