@@ -77,7 +77,9 @@ def getChangeString() {
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
             if(file.path.contains("products/")){
-              changeString += file.path.split("/").takeRight(1) + " "
+              def arr = file.path.split("/");
+              def fileName = arr.takeRight(1);
+              changeString +=fileName + " ";
             }
         }
       }
