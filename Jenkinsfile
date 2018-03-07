@@ -29,7 +29,7 @@ pipeline {
     stage('Validate and Tokenize') {
       when {
         expression {
-            return  $getChangeString() != "";
+            return  getChangeString() != "";
             }
         }
       steps {
@@ -39,7 +39,7 @@ pipeline {
     stage('Copy to temp') {
       when {
         expression {
-            return  $getChangeString() != "";
+            return  getChangeString() != "";
             }
         }
       steps {
