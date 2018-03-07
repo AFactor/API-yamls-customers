@@ -10,15 +10,9 @@ pipeline {
   environment {
      fileNames="none"
   }
-       
-  if( $getChangeString() == "" ) {
-   currentBuild.result = 'ABORTED'
-   return
-}
   
   stages {
     
-
     stage('Check Source') {
         steps {
             deleteDir()
@@ -29,6 +23,17 @@ pipeline {
             }
         }
     }
+
+     stage('Check API Products') {
+        when {
+        expression {
+            return  $getChangeString() == "";
+            }
+        }
+        steps {
+          currentBuild.result = 'ABORTED'
+        }
+     }
 
     stage('Validate and Tokenize') {
       steps {
