@@ -29,7 +29,7 @@ pipeline {
     stage('Validate and Tokenize') {
       when {
         expression {
-            return  getChangeString() != "";
+            return  productName != "";
             }
         }
       steps {
@@ -39,22 +39,22 @@ pipeline {
     stage('Copy to temp') {
       when {
         expression {
-            return  getChangeString() != "";
+            return  productName!= "";
             }
         }
       steps {
         
-        sh returnStdout: true, script: """ core/Scripts/copy.sh ${getChangeString()} """
+        sh returnStdout: true, script: """ core/Scripts/copy.sh ${productName} """
       }
     }
     stage('Deploy to API Cloud') {
       when {
         expression {
-            return  getChangeString() != "";
+            return  productName != "";
             }
         }
       steps {
-        configFileProvider([configFile(fileId: '14ce0658-5942-4980-a3cf-7bef5e1bd2c9', variable: 'ciConfig')]) {
+        configFileProvider([configFile(fileId: '7de5560d-ccb6-4227-9e67-597aa3de4fef', variable: 'sitConfig')]) {
         sh returnStdout: true, script: '''core/Scripts/deploy.sh'''
          }
       }
