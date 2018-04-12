@@ -33,7 +33,7 @@ pipeline {
             }
         }
       steps {
-        sh returnStdout: true, script: '''core/Scripts/validatetokenize.sh''' 
+        sh returnStdout: true, script: """ core/Scripts/validatetokenize.sh ${getChangeString()} """
       }
     }
     stage('Copy to temp') {
